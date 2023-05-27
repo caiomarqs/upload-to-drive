@@ -1,10 +1,21 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  serviceAccountCredentials:  # id of input
+    description: 'Base64 json of your service account credentials'
     required: true
-    default: '1000'
+    default: ''
+  driveFolderId:  # id of input
+    description: 'Drive folder id to uplaod the files'
+    required: true
+    default: ''
+  folderToUpload:  # id of input
+    description: 'Folder of your project to upload to drive'
+    required: true
+    default: ''
+  ignorePaths:  # id of input
+    description: 'Folders to ignore on upload to drive'
+    default: ''
 outputs:
   time: # output will be available to future steps
     description: 'The current time after waiting'
