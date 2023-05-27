@@ -1,17 +1,20 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  drive-credentials:  # id of input
-    description: 'Base64 json of your drive credentials'
+  serviceAccountCredentials:  # id of input
+    description: 'Base64 json of your service account credentials'
     required: true
     default: ''
-  drive-folder-id:  # id of input
+  driveFolderId:  # id of input
     description: 'Drive folder id to uplaod the files'
     required: true
     default: ''
-  folder-to-upload:  # id of input
+  folderToUpload:  # id of input
     description: 'Folder of your project to upload to drive'
     required: true
+    default: ''
+  ignorePaths:  # id of input
+    description: 'Folders to ignore on upload to drive'
     default: ''
 outputs:
   time: # output will be available to future steps
