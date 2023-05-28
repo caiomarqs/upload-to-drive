@@ -4,18 +4,25 @@ const fs = require('fs')
 const gdrive = require('./lib/gdrive')
 require('dotenv').config()
 
-async function run() {
+const run = async () => {
   try {
     const folderPath = core.getInput('folderToUpload')
     const ignorePaths = core.getInput('ignorePaths').split(',')
+    const driveFolderId = core.getInput('driveFolderId')
 
-    fs.readdir(folderPath, (err, items) => items.forEach(
-      item => gdrive.uploadFile(
-        item,
-        core.getInput('driveFolderId'),
-        ignorePaths
+    await gdrive.deleteFilesFolder(driveFolderId)
+
+    fs.readdir(folderPath, (err, items) => {
+      core.info('Upload files to drive')
+
+      items.forEach(
+        async item => await gdrive.uploadFile(
+          item,
+          driveFolderId,
+          ignorePaths
+        )
       )
-    ))
+    })
   }
   catch (error) {
     core.setFailed(error.message)
