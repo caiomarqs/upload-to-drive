@@ -13,7 +13,10 @@ const run = async () => {
     await gdrive.deleteFilesFolder(driveFolderId)
 
     fs.readdir(folderPath, (err, items) => {
+      
       core.info('Upload files to drive')
+
+      core.info(items)
 
       items.forEach(
         async item => await gdrive.uploadFile(
