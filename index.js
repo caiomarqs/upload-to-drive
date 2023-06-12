@@ -16,6 +16,8 @@ const run = async () => {
     await gdrive.deleteFilesFolder(driveFolderId)
 
     const completeFolderPath = path.join(__dirname, folderPath)
+    
+    core.info(`Reading folder ${completeFolderPath}`)
 
     fs.readdir(completeFolderPath, (err, items) => {
       core.info('Upload files to drive')
