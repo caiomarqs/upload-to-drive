@@ -15,8 +15,10 @@ const run = async () => {
     
     await gdrive.deleteFilesFolder(driveFolderId)
 
-    const completeFolderPath = path.join(__dirname, folderPath)
-    
+    const rootInitialization = __dirname.includes('_actions') ? '' : __dirname
+
+    const completeFolderPath = path.join(rootInitialization, folderPath)
+
     core.info(`Reading folder ${completeFolderPath}`)
 
     fs.readdir(completeFolderPath, (err, items) => {
